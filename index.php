@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Login Balnk</title>
-<link href="css/login.css" rel="stylesheet" type="text/css" />
+<link href="loginmodule.css" rel="stylesheet" type="text/css" />
 <link href="favicon.ico" rel="icon" type="image/x-icon" />
 </head>
   <body>
