@@ -2,7 +2,6 @@
 
 <h1>Readme</h1>
 Willkommen in meinem User Control Project
- Demo User: Admin PW: admin
 </ol>
 <h2>Notes</h2>
 <ul>
