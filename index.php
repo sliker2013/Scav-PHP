@@ -2,8 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>Login Form</title>
-<link href="css/style.css" rel="stylesheet" type="text/css" />
+<title>Login Balnk</title>
+<link href="css/login.css" rel="stylesheet" type="text/css" />
+<link href="favicon.ico" rel="icon" type="image/x-icon" />
 </head>
   <body>
 
@@ -13,15 +14,18 @@
 
     <div class="grid__container">
 <p>&nbsp;</p>
-<form id="loginForm" name="loginForm" method="post" action="login-exec.php">
+<form id="loginForm" name="loginForm" method="post" action="login-exec.php" class="form form--login">
   <table width="300" border="0" align="center" cellpadding="2" cellspacing="0">
     <tr>
-      <td width="112"><b>Login</b></td>
-      <td width="188"><input name="login" type="text" class="textfield" id="login" /></td>
-    </tr>
-    <tr>
-      <td><b>Password</b></td>
-      <td><input name="password" type="password" class="textfield" id="password" /></td>
+        <div class="form__field">
+          <label class="fontawesome-user" for="login__username"><span class="hidden">Username</span></label>
+          <input name="login" type="text" class="textfield" id="login" />
+        </div>
+
+        <div class="form__field">
+          <label class="fontawesome-lock" for="login__password"><span class="hidden">Password</span></label>
+		  <input name="password" type="password" class="textfield" id="password" /></td>
+	    </div>
     </tr>
     <tr>
       <td>&nbsp;</td>
@@ -29,5 +33,10 @@
     </tr>
   </table>
 </form>
+      <p class="text--center">Copyright: 2015 Sliker-Dev</p>
+
+    </div>
+
+  </div>
 </body>
 </html>
