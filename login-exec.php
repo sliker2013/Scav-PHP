@@ -3,7 +3,7 @@
 	session_start();
 	
 	//Include database connection details
-	require_once('config.php');
+	require_once('inc/config.php');
 	
 	//Array to store validation errors
 	$errmsg_arr = array();
@@ -38,11 +38,11 @@
 	
 	//Input Validations
 	if($login == '') {
-		$errmsg_arr[] = 'Login ID missing';
+		$errmsg_arr[] = 'Login ID fehlt';
 		$errflag = true;
 	}
 	if($password == '') {
-		$errmsg_arr[] = 'Password missing';
+		$errmsg_arr[] = 'Password fehlt';
 		$errflag = true;
 	}
 	
@@ -55,7 +55,7 @@
 	}
 	
 	//Create query
-	$qry="SELECT * FROM members WHERE login='$login' AND passwd='".md5($_POST['password'])."'";
+	$qry="SELECT * FROM w_members WHERE login='$login' AND passwd='".md5($_POST['password'])."'";
 	$result=mysql_query($qry);
 	
 	//Check whether the query was successful or not
@@ -67,12 +67,18 @@
 			$_SESSION['SESS_MEMBER_ID'] = $member['member_id'];
 			$_SESSION['SESS_FIRST_NAME'] = $member['firstname'];
 			$_SESSION['SESS_LAST_NAME'] = $member['lastname'];
+			$_SESSION['SESS_LOGIN_NAME'] = $member['login'];
+			$_SESSION['SESS_EMAIL_NAME'] = $member['email'];
+			$_SESSION['SESS_AVATAR'] = $member['avatar'];
+		list($user_level) = mysql_fetch_row(mysql_query("select user_level from w_members where member_id='$_SESSION[SESS_MEMBER_ID]'"));
+
+			$_SESSION['user_level'] = $user_level;
 			session_write_close();
 			header("location: member-index.php");
 			exit();
 		}else {
 			//Login failed
-			header("location: login-failed.php");
+			header("location: loginfailed.php");
 			exit();
 		}
 	}else {

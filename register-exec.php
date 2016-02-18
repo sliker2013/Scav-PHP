@@ -3,7 +3,7 @@
 	session_start();
 	
 	//Include database connection details
-	require_once('config.php');
+	require_once('inc/config.php');
 	
 	//Array to store validation errors
 	$errmsg_arr = array();
@@ -38,6 +38,7 @@
 	$login = clean($_POST['login']);
 	$password = clean($_POST['password']);
 	$cpassword = clean($_POST['cpassword']);
+	$email = clean($_POST['email']);
 	
 	//Input Validations
 	if($fname == '') {
@@ -64,10 +65,14 @@
 		$errmsg_arr[] = 'Passwords do not match';
 		$errflag = true;
 	}
+		if($email == '') {
+		$errmsg_arr[] = 'Email fehlt';
+		$errflag = true;
+	}
 	
 	//Check for duplicate login ID
 	if($login != '') {
-		$qry = "SELECT * FROM members WHERE login='$login'";
+		$qry = "SELECT * FROM w_members WHERE login='$login'";
 		$result = mysql_query($qry);
 		if($result) {
 			if(mysql_num_rows($result) > 0) {
@@ -85,17 +90,18 @@
 	if($errflag) {
 		$_SESSION['ERRMSG_ARR'] = $errmsg_arr;
 		session_write_close();
-		header("location: register-form.php");
+		header("location: register.php");
 		exit();
 	}
 
 	//Create INSERT query
-	$qry = "INSERT INTO members(firstname, lastname, login, passwd) VALUES('$fname','$lname','$login','".md5($_POST['password'])."')";
+	$qry = "INSERT INTO w_members(firstname, lastname, login, passwd, email, signup_date) VALUES('$fname','$lname','$login','".md5($_POST['password'])."','$email', "'.time().'")";
 	$result = @mysql_query($qry);
 	
 	//Check whether the query was successful or not
 	if($result) {
-		header("location: register-success.php");
+		echo "Erfolgreich Registriert";
+		header("Refresh: 3; index.php");
 		exit();
 	}else {
 		die("Query failed");

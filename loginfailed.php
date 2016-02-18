@@ -4,10 +4,11 @@
 	include('tmp/header.php'); //HTML Header Bereich
 
 ?>
+
 		<div class="body">
 			<div class="left_body">
 				<div class="slider">
-					<iframe width="600" height="250" src="https://www.youtube.com/embed/tZrF037tFGo" frameborder="0" allowfullscreen></iframe>
+					<iframe width="600" height="250" src="https://www.youtube.com/embed/-Gqo1lD1skQ" frameborder="0" allowfullscreen></iframe>
 				</div>
 				<div class="box_title"><?php
 				require_once('inc/config.php');
@@ -17,13 +18,8 @@
 				echo $row['title'] . "<br />";}
 ?></div>
 				<div class="box_content">
-<?php
-				require_once('inc/config.php');
-				$sql = "SELECT cat FROM w_news ORDER BY id DESC LIMIT 1";
-				$rs = mysql_query($sql);
-				while($row = mysql_fetch_assoc($rs)) {
-				echo $row['cat'] . "<br />";}
-?>				</div>
+<font color="018DB8"><b>Falsche Daten Benutzt!</b><p></br></font>
+Versuche es Nochmal				</div>
 			</div>
 			<div class="right_body">
 				<div class="box_title"><font color="#018DB8">Memberbereich</font></div>
